@@ -2,52 +2,40 @@ package me.tewpingz.message;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextColor;
 
 @Getter
 @RequiredArgsConstructor
-public enum MessageBuilderColor {
+public class MessageBuilderColor {
+    public static final MessageBuilderColor GOLD = new MessageBuilderColor(NamedTextColor.GOLD);
+    public static final MessageBuilderColor YELLOW = new MessageBuilderColor(NamedTextColor.YELLOW);
+    public static final MessageBuilderColor DARK_RED = new MessageBuilderColor(NamedTextColor.DARK_RED);
+    public static final MessageBuilderColor RED = new MessageBuilderColor(NamedTextColor.RED);
+    public static final MessageBuilderColor DARK_GREEN = new MessageBuilderColor(NamedTextColor.DARK_GREEN);
+    public static final MessageBuilderColor GREEN = new MessageBuilderColor(NamedTextColor.GREEN);
+    public static final MessageBuilderColor DARK_AQUA = new MessageBuilderColor(NamedTextColor.DARK_AQUA);
+    public static final MessageBuilderColor AQUA = new MessageBuilderColor(NamedTextColor.AQUA);
+    public static final MessageBuilderColor DARK_BLUE = new MessageBuilderColor(NamedTextColor.DARK_BLUE);
+    public static final MessageBuilderColor BLUE = new MessageBuilderColor(NamedTextColor.BLUE);
+    public static final MessageBuilderColor DARK_PURPLE = new MessageBuilderColor(NamedTextColor.DARK_PURPLE);
+    public static final MessageBuilderColor PURPLE = new MessageBuilderColor(NamedTextColor.LIGHT_PURPLE);
+    public static final MessageBuilderColor DARK_GRAY = new MessageBuilderColor(NamedTextColor.DARK_GRAY);
+    public static final MessageBuilderColor GRAY = new MessageBuilderColor(NamedTextColor.GRAY);
+    public static final MessageBuilderColor WHITE = new MessageBuilderColor(NamedTextColor.WHITE);
+    public static final MessageBuilderColor BLACK = new MessageBuilderColor(NamedTextColor.BLACK);
 
-    // RED
-    DARK_RED('4'),
-    RED('c'),
+    private final TextColor textColor;
 
-    // YELLOW
-    GOLD('6'),
-    YELLOW('e'),
-
-    // GREEN
-    DARK_GREEN('2'),
-    GREEN('a'),
-
-    // AQUA
-    DARK_AQUA('3'),
-    AQUA('b'),
-
-    // BLUE
-    DARK_BLUE('1'),
-    BLUE('9'),
-
-    // PURPLE
-    DARK_PURPLE('5'),
-    PURPLE('d'),
-
-    // GRAY
-    DARK_GRAY('8'),
-    GRAY('7'),
-
-    // DEFAULTS
-    RESET('r'),
-    BLACK('0'),
-    WHITE('f');
-
-    private final char chatCode;
-
-    /**
-     * Function to allow you to quickly convert the message builder color to a chat color
-     * @return a string with the color code symbol and the chat code together
-     */
-    public String toChatColor() {
-        return "§" + this.chatCode;
+    public MessageBuilderColor(int red, int green, int blue) {
+        this.textColor = TextColor.color(red, green, blue);
     }
 
+    public MessageBuilderColor(String hex) {
+        this.textColor = TextColor.fromHexString(hex);
+    }
+
+    public MessageBuilderColor(NamedTextColor color) {
+        this.textColor = color;
+    }
 }
