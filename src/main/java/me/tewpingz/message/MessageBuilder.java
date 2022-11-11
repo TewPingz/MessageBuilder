@@ -13,7 +13,6 @@ public class MessageBuilder {
 
     private final MessageBuilderColorPallet pallet;
     private final TextComponent.Builder componentBuilder;
-    private final boolean defaultSpace;
 
     @Getter
     private boolean empty = true;
@@ -23,18 +22,8 @@ public class MessageBuilder {
      * @param pallet the color pallet that will be used.
      */
     public MessageBuilder(MessageBuilderColorPallet pallet) {
-        this(pallet, true);
-    }
-
-    /**
-     * Simple way to create a message builder
-     * @param pallet the color pallet that will be used.
-     * @param defaultSpace whether spacing should be used or not
-     */
-    public MessageBuilder(MessageBuilderColorPallet pallet, boolean defaultSpace) {
         this.pallet = pallet;
         this.componentBuilder = Component.text();
-        this.defaultSpace = defaultSpace;
     }
 
     /**
@@ -52,8 +41,7 @@ public class MessageBuilder {
      * @return the message builder instance to continue building
      */
     public MessageBuilder primary(Supplier<Object> supplier) {
-        this.append(pallet.getPrimary(), supplier);
-        return this;
+        return this.append(pallet.getPrimary(), supplier);
     }
 
     /**
@@ -71,8 +59,7 @@ public class MessageBuilder {
      * @return the message builder instance to continue building
      */
     public MessageBuilder secondary(Supplier<Object> supplier) {
-        this.append(pallet.getSecondary(), supplier);
-        return this;
+        return this.append(pallet.getSecondary(), supplier);
     }
 
     /**
@@ -90,8 +77,15 @@ public class MessageBuilder {
      * @return the message builder instance to continue building
      */
     public MessageBuilder tertiary(Supplier<Object> supplier) {
-        this.append(pallet.getTertiary(), supplier);
-        return this;
+        return this.append(pallet.getTertiary(), supplier);
+    }
+
+    public MessageBuilder space() {
+        return this.space(1);
+    }
+
+    public MessageBuilder space(int amount) {
+        return this.append(Component.text(" ".repeat(amount)));
     }
 
     /**
@@ -139,12 +133,7 @@ public class MessageBuilder {
         return this;
     }
 
-    private void append(MessageBuilderColor color, Supplier<Object> supplier) {
-        this.append(Component.text(supplier.get().toString()).color(color.getTextColor()));
-
-        // Check if default spacing is enabled
-        if (this.defaultSpace) {
-            this.append(Component.space()); // If it is, add a space
-        }
+    private MessageBuilder append(MessageBuilderColor color, Supplier<Object> supplier) {
+        return this.append(Component.text(supplier.get().toString()).color(color.getTextColor()));
     }
 }

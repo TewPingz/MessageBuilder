@@ -13,26 +13,14 @@ public class MessageBuilderDefaults {
     }
 
     public static MessageBuilder success() {
-        return success(true);
-    }
-
-    public static MessageBuilder success(boolean defaultSpace) {
-        return new MessageBuilder(successColorPallet, defaultSpace);
+        return new MessageBuilder(successColorPallet);
     }
 
     public static MessageBuilder error() {
-        return error(true);
-    }
-
-    public static MessageBuilder error(boolean defaultSpace) {
-        return new MessageBuilder(errorColorPallet, defaultSpace);
+        return new MessageBuilder(errorColorPallet);
     }
 
     public static MessageBuilder normal() {
-        return normal(true);
-    }
-
-    public static MessageBuilder normal(boolean defaultSpace) {
-        return new MessageBuilder(normalColorPallet, defaultSpace);
+        return new MessageBuilder(normalColorPallet);
     }
 }
