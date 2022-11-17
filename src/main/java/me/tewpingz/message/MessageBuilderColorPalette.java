@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class MessageBuilderColorPallet {
+public class MessageBuilderColorPalette {
 
     private final MessageBuilderColor primary, secondary, tertiary;
 

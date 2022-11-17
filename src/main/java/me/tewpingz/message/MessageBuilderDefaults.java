@@ -2,14 +2,14 @@ package me.tewpingz.message;
 
 public class MessageBuilderDefaults {
 
-    private static final MessageBuilderColorPallet successColorPallet;
-    private static final MessageBuilderColorPallet errorColorPallet;
-    private static final MessageBuilderColorPallet normalColorPallet;
+    private static final MessageBuilderColorPalette successColorPallet;
+    private static final MessageBuilderColorPalette errorColorPallet;
+    private static final MessageBuilderColorPalette normalColorPallet;
 
     static {
-        successColorPallet = new MessageBuilderColorPallet(MessageBuilderColor.GREEN, MessageBuilderColor.WHITE, MessageBuilderColor.GRAY);
-        errorColorPallet = new MessageBuilderColorPallet(MessageBuilderColor.RED, MessageBuilderColor.DARK_RED, MessageBuilderColor.GRAY);
-        normalColorPallet = new MessageBuilderColorPallet(MessageBuilderColor.GOLD, MessageBuilderColor.WHITE, MessageBuilderColor.GRAY);
+        successColorPallet = new MessageBuilderColorPalette(MessageBuilderColor.GREEN, MessageBuilderColor.WHITE, MessageBuilderColor.GRAY);
+        errorColorPallet = new MessageBuilderColorPalette(MessageBuilderColor.RED, MessageBuilderColor.DARK_RED, MessageBuilderColor.GRAY);
+        normalColorPallet = new MessageBuilderColorPalette(MessageBuilderColor.GOLD, MessageBuilderColor.WHITE, MessageBuilderColor.GRAY);
     }
 
     public static MessageBuilder success() {

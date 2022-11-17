@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 public class MessageBuilder {
     private static final LegacyComponentSerializer SERIALIZER = LegacyComponentSerializer.legacy('§');
 
-    private final MessageBuilderColorPallet pallet;
+    private final MessageBuilderColorPalette pallet;
     private final TextComponent.Builder componentBuilder;
 
     @Getter
@@ -21,7 +21,7 @@ public class MessageBuilder {
      * Simple way to create a message builder by and having default spacing
      * @param pallet the color pallet that will be used.
      */
-    public MessageBuilder(MessageBuilderColorPallet pallet) {
+    public MessageBuilder(MessageBuilderColorPalette pallet) {
         this.pallet = pallet;
         this.componentBuilder = Component.text();
     }
